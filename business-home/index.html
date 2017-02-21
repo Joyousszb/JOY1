@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<script type="text/javascript" src="javascript/banner.js"></script>
+</head>
+<body> 
+
+<!-- 导航栏部分 开始-->
+<div class="nav">
+   <div class="w">
+      <div class="logo"><img src="images/LOGO.png" alt=""></div>
+      <div class="menu">
+         <ul>
+           <li><a href="#">HOME</a></li>
+           <li><a href="#">ABOUT US</a></li>
+           <li id ="lilist-1">
+               <div class="menu-lists" style="display:none;">
+                 <div class="menu-list"></div>
+                 <div class="menu-list-screen">
+                    <ul>
+                       <li><a href="#">Web Design</a></li>
+                       <li><a href="#">Wordpress Design</a></li>
+                       <li><a href="#" style="color:#2BACC9;">Mobile App Devplopment</a></li>
+                       <li><a href="#">Internet Marketing</a></li>
+                       <li><a href="#">Social Media Management</a></li>
+                    </ul>
+                 </div>
+               </div>
+               <a href="#">SERVICES</a><i><s>◇</s></i>
+           </li>
+           <li id="lilist-2">
+               <div class="menu-lists" style="display:none;">
+                 <div class="menu-list"></div>
+                 <div class="menu-list-screen">
+                    <ul>
+                       <li><a href="#">Web Design</a></li>
+                       <li><a href="#">Wordpress Design</a></li>
+                       <li><a href="#">Mobile App Devplopment</a></li>
+                       <li><a href="#">Internet Marketing</a></li>
+                       <li><a href="#">Social Media Management</a></li>
+                    </ul>
+                 </div>
+              </div>
+              <a href="#">PORTFOLIO</a><i><s>◇</s></i></li>
+           <li><a href="#">BLOG</a></li>
+           <li><a href="#">CONTACT US</a></li>
+         </ul>
+      </div>
+   </div>
+</div>
+
+
+<!-- 导航栏部分 结束-->
+
+<script>
+
+     tab("lilist-1")
+     tab("lilist-2")
+
+   	 function tab(obj){
+	  	 var obj = document.getElementById(obj);
+	  	 obj.onmouseover =function(){
+	  	 	obj.children[0].style.display="block";
+	  	 }
+	  	 obj.onmouseout=function(){
+	  	 	obj.children[0].style.display="none";
+	  	 }
+  	 }
+
+</script>
+
+
+<!-- 轮播图部分 开始-->
+<div class="banner">
+   <div class="w">
+      <div class="menu-banner"  id="banner">
+         <div class="banner-screen">
+	       <ul>
+	       	<li><a href="#"><img src="images/banner1.jpg" alt=""></a></li>
+	       	<li><a href="#"><img src="images/banner2.jpg" alt=""></a></li>
+	       	<li><a href="#"><img src="images/banner3.jpg" alt=""></a></li>
+	       	<li><a href="#"><img src="images/banner4.jpg" alt=""></a></li>
+	       	<li><a href="#"><img src="images/banner5.jpg" alt=""></a></li>
+	       </ul>
+	       <ol></ol>
+	     </div>
+      </div>
+
+   </div>
+</div>
+
+
+<!-- 轮播图部分 结束-->
+
+
+<!-- middle section   开始 -->
+<div class="middle-section">
+  <div class="w">
+	 <div class="section-1">
+        <div class="clean-1">
+           <i><img src="images/sec1.png" alt=""></i><h5><a href="#">CLEAN THEME</a></h5>
+        </div>
+        <div class="clean-2">
+		    <p>Ut nec lorem id orci convallis porta. Donec pharetra neque eu velit dictum molestie. Duis porta gravida augue <br>sed viverra. Quisque at nulla leo, non aliquet mi.</p>
+        </div>
+        <div class="clean-3">
+            <i>></i><a href="#">Read More</a>
+        </div>
+	 </div>
+	 <div class="section-1">
+        <div class="clean-1">
+           <i><img src="images/sec2.png" alt=""></i><h5><a href="#">Responsive Design</a></h5>
+        </div>
+        <div class="clean-2">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod placerat dui et tincidunt. Sed sollicitudin posuere auctor. Phasellus at ultricies nisl. Integer at leo eros.</p>
+        </div>
+        <div class="clean-3">
+            <i>></i><a href="#">Read More</a>
+        </div>
+	 </div>
+	 <div class="section-1">
+        <div class="clean-1">
+           <i><img src="images/sec3.png" alt=""></i><h5><a href="#">Fully layerd PSD </a></h5>
+        </div>
+        <div class="clean-2">
+          <p>Phasellus lobortis metus non augue sodales volutpat. Vestibulum sit amet nibh eros, hendrerit venenatis est. In vitae nulla nec purus cursus pretium sed id magna.</p>
+        </div>
+        <div class="clean-3">
+            <i>></i><a href="#">Read More</a>
+        </div>
+	 </div>
+	 <div class="section-2">
+	    <div class="clean-1">
+          <i><img src="images/sec4.png" alt=""></i><h5><a href="#">Ready for coding</a></h5>
+        </div>
+        <div class="clean-2">
+          <p>Vivamus convallis feugiat mauris sed posuere. Nam rutrum, quam quis euismod commodo, elit est porta quam, non placerat eros neque porta ante. Fusce quis odio urna. </p>
+        </div>
+        <div class="clean-3">
+            <i>></i><a href="#">Read More</a>
+        </div>
+	 </div>
+  </div>
+</div>
+
+
+
+<!-- middle section   结束 -->
+
+
+<!-- Latest works 部分 开始-->
+<div class="latest ">
+  <div class="w">
+      <div class="latest-works">
+          <div class="latest-menu">
+            <i><img src="images/jiantou.png" alt=""></i><h5>LATEST WORKS</h5>
+          </div>
+	      <div class="latest-works-pic">
+		      <div class="latest-works-pic-1" id="latest-pic">
+                  <ul>
+                  	<li><i>
+                  	      <a href="#"><img src="images/1.jpg" alt=""></a>
+                  	      <s>
+                  	         <a href="#"><img src="images/yulan.png" alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  	         <a href="#"><img src="images/lianjie.png" alt=""></a>
+                  	      </s>
+                  	</i></li>
+                    <li><i>
+                  	      <a href="#"><img src="images/2.jpg" alt=""></a>
+                  	      <s >
+                  	         <a href="#"><img src="images/yulan.png" alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  	         <a href="#"><img src="images/lianjie.png" alt=""></a>
+                  	      </s>
+                  	</i></li>
+                  	<li><i>
+                  	      <a href="#"><img src="images/3.jpg" alt=""></a>
+                  	      <s>
+                  	         <a href="#"><img src="images/yulan.png" alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  	         <a href="#"><img src="images/lianjie.png" alt=""></a>
+                  	      </s>
+                  	</i></li>
+                  	<li><i>
+                  	      <a href="#"><img src="images/4.jpg" alt=""></a>
+                  	      <s>
+                  	         <a href="#"><img src="images/yulan.png" alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  	         <a href="#"><img src="images/lianjie.png" alt=""></a>
+                  	      </s>
+                  	</i></li>
+                  	<li><i>
+                  	      <a href="#"><img src="images/5.jpg" alt=""></a>
+                  	      <s>
+                  	         <a href="#"><img src="images/yulan.png" alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  	         <a href="#"><img src="images/lianjie.png" alt=""></a>
+                  	      </s>
+                  	</i></li>
+
+                  </ul>
+		      </div>
+        
+	      </div>
+	  </div>
+      <div class="Testimonials-Clients clearfix">
+          <div class="Testimonials latest-menu">
+             <div class="Testimonials-1">
+                 <i><img src="images/xiaoxi.png" alt=""></i><h5>TESTIMONIALS</h5>
+             </div>
+             <div class="Testimonials-2">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut nulla sapien, at aliquam erat. Sed vitae massa tellus. Aliquam commodo aliquam metus, sed iaculis nibh tempus id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam nec nisi in nisl euismod fringilla.</p>
+             </div>
+             <div class="Testimonials-3">
+                  <i>John Travis, CEO, DomainName.com</i>
+             </div>
+          </div>
+          <div class="Clients latest-menu clearfix">
+            <i><img src="images/ren.png" alt=""></i><h5>OUR CLINENTS</h5>
+            <div class="Clients-nav">
+	            <ul>
+	                <li><a href="#" class="Clients-nav-1"></a></li>
+	                <li><a href="#" class="Clients-nav-2"></a></li>
+	                <li><a href="#" class="Clients-nav-3"></a></li>
+	                <li><a href="#" class="Clients-nav-4"></a></li>
+	                <li><a href="#" class="Clients-nav-5"></a></li>
+	                <li><a href="#" class="Clients-nav-6"></a></li>
+	            </ul>
+            </div>
+          </div>
+      </div>
+      <div class="down-psd">
+          <div class="down-psd-new">
+              <p>This is a clean and modern, four column website PSD template. You can code it into a Wordpress website, HTML5 responsive website for your personal or client works. So ahead and download this wonderful PSD template! </p>
+          </div>
+          <div class="download-ico">
+             <a href="#"><i>Download PSD</i></a>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Latest works 部分 结束-->
+
+
+<!-- Footer部分  开始-->
+<div class="footer">
+    <div class="w">
+	    <div class="footer-list">
+	        <div class="footer-nav-1">
+	             <h5>ABOUT US</h5>
+	             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod placerat dui et tincidunt. Sed sollicitudin posuere auctor. Phasellus at ultricies nisl. Integer at leo eros. Ut nec lorem id orci convallis porta. Donec pharetra neque eu velit dictum molestie. </p>
+	        </div>
+	        <div class="footer-nav-2">
+	             <h5>EXPLORE</h5>
+	             <ul>
+                   <li><a href="#">Home</a></li>
+                   <li><a href="#">About Us</a></li>
+                   <li><a href="#">Services</a></li>
+                   <li><a href="#">Portfolio</a></li>
+                   <li><a href="#">Blog</a></li>
+                </ul>
+	        </div>
+	        <div class="footer-nav-2">
+	             <h5>BROWSE</h5>
+	             <ul>
+                   <li><a href="#">Careers</a></li>
+                   <li><a href="#">Press & Media</a></li>
+                   <li><a href="#">Contact Us</a></li>
+                   <li><a href="#">Terms of Service</a></li>
+                   <li><a href="#">Privacy Policy</a></li>
+                </ul>
+	        </div>
+	        <div class="footer-nav-2">
+	             <h5>CONTACT US</h5>
+	             <p style="margin-top:12px;"><b>BisLite Inc.</b></p>
+	             <p>Always Street 265</p>
+	             <p>0X - 125 - Canada</p>
+	             <br>
+	             <p>Phone: 987-6543-210</p>
+	             <p>Fax: 987-6543-210</p>
+	        </div>
+	        <div class="footer-nav-last">
+	             <h5>CONTACT WITH US</h5>
+	             <ul>
+                     <li><a href="#" class="footer-ico-1"></a></li>
+                     <li><a href="#" class="footer-ico-2"></a></li>
+                     <li><a href="#" class="footer-ico-3"></a></li>
+                     <li><a href="#" class="footer-ico-4"></a></li>
+                     <li><a href="#" class="footer-ico-5"></a></li>
+                     <li><a href="#" class="footer-ico-6"></a></li>
+
+	             </ul>
+	        </div>
+	    </div>
+	    <div class="footer-last">
+             <div class="footer-last-fl">
+                  <p>© Copyright 2012 - BisLite Inc. All rights reserved. Some free icons used here are created by <a href="#">Brankic1979.com.</a></p>
+                  <p>Client Logos are copyright and trademark of the respective owners / companies. </p>
+             </div>
+             <div class="footer-last-fr">
+                  <a href="#"><img src="images/LOGO.png" alt=""></a>
+             </div>
+	    </div>
+	</div>
+</div>
+<!-- Footer部分  结束-->
+
+	
+</body>
+</html>
