@@ -1,0 +1,111 @@
+
+/*首页banner部分*/
+.main_banner {
+	width: 100%;
+	height: 450px;
+	overflow: hidden;
+	position: relative;
+}
+
+.main_banner ul li {
+	width:100%;
+	height:450px; 
+	opacity: 0;
+	filter: alpha(opacity=0);
+	position: absolute;
+	margin:0px auto;
+}
+.main_banner li a {
+	display: inline-block;
+	width: 100%;
+	height: 450px;
+}
+.main_banner .common {
+	display: none;
+}
+.banner-btnArr span{ 
+	width:40px;
+	height:60px; 
+	position:absolute;  
+	margin-top:-20px; 
+	background:#000;
+	cursor:pointer; 
+	text-align:center; 
+	font-weight:bold; 
+	font: 40px/60px '黑体';
+	color:#fff;
+	opacity:0.3; 
+	border:1px solid #fff;
+	left:20px; top:50%;
+}
+.banner-btnArr .banner-btnRight{
+	right:20px; 
+	left:auto;
+}
+.main_banner ol {
+	position:absolute;
+	right: 48%;
+	bottom:10px; 
+	line-height:20px; 
+	text-align:center;
+}
+.main_banner ol li { 
+	float:left; 
+	width:20px; 
+	height:20px; 
+	background:rgba(255,255,255,0.6);
+	border-radius: 50%;
+	margin-left:10px; 
+	cursor:pointer;
+}
+.main_banner  .current{ background:#167A58;}
+
+
+
+ /*========精品商品=========== */
+ .fine_goods {
+ 	height: 850px;
+ 	overflow: hidden;
+ }
+ .fine_title-img {
+ 	height: 56px;
+ 	background: url(../img/title.png)no-repeat center center;
+ 	text-align: center;
+ }
+ .fine_goods_title {
+    margin-top: 30px;
+ 	margin-bottom: 40px;
+ }
+ .fine_title-img p {
+ 	color: #167A58;
+ 	font-size: 20px;
+ 	line-height: 55px;
+ }
+.fine_goods_content ul {
+	width: 1200px;
+}
+.fine_goods_content li {
+	width: 270px;
+	height: 330px;
+	background-color: pink;
+	margin-right: 22px;
+	margin-bottom: 25px;
+	float: left;
+}
+
+ /*========精品栏目=========== */
+.fine_column {
+	height: 600px;
+}
+.fine_column_title {
+	margin-bottom:50px;
+}
+.column_new_common {
+	float: left;
+	width: 370px;
+	height: 425px;
+	background-color: pink;
+}
+.new_mid {
+	margin:0 20px;
+}
