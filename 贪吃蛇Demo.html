@@ -12,16 +12,39 @@
 	#box canvas {
 		background-color: #ccc;
 	}
+	#box button {
+		width: 100px;
+		height:100px;
+		font-size: 32px;
+	}
+	#box .div1 {
+		width: 100px;
+		margin: 100px auto 0;
+	}
+	#box .div2 {
+		width: 310px;
+		margin: 5px auto;
+	}
 </style>
 <body>
 	<div id="box">
 		<canvas id="cvs" width="800" height="400"></canvas>
+		<div class="div1">
+			<button class="top" onclick="goTop()">↑</button>
+		</div>
+		<div class="div2">
+			<button id="left" onclick="goLeft()">←</button>
+			<button id="bottom" onclick="goDown()">↓</button>
+			<button id="right" onclick="goRight()">→</button>
+		</div>
 	</div>
+
 </body>
 </html>
 <script>
 	var cvs = document.querySelector('#cvs');
 	var ctx = cvs.getContext('2d');
+
 	//混入式继承
 	function extend(o1,o2) {
 		for(var key in o2){
@@ -114,30 +137,24 @@
 		bind:function(){
 			var _this = this;
 			document.addEventListener( 'keydown',function(e){
+				var e = event || window.event;
+           		var keyCode = e.keyCode || e.which;
 				switch(e.keyCode) {
 					case 37:
-						if ( _this.direction != "right" ) {
-	 						_this.direction = "left";  //左走							
-						}
+						goLeft();
 	 					break;
 	 				case 38:
-	 					if ( _this.direction != "bottom" ) {
-	 						_this.direction = 'top';  //上走	 						
-	 					}
+	 					goTop();
 	 					break;
 	 				case 39:
-	 					if ( _this.direction != "left" ) {
-		 					_this.direction = 'right';  //右走 						
-	 					}
+	 					goRight();
 	 					break;
 	 				case 40:
-	 					if ( _this.direction != "top" ) {
-		 					_this.direction = 'bottom';  //下走	 						
-	 					}
+	 					goDown();
 	 					break;	
 				}
 				e.preventDefault();
-			} )
+			});
 		}
 	});
 	//随机函数，获得[min,max]范围的值
@@ -173,6 +190,26 @@
             return false;
         }
     }
+    function goLeft(){
+    	if ( snake.direction != "right" ) {
+	 		snake.direction = "left";  //左走							
+		}
+    }
+    function goTop(){
+    	if ( snake.direction != "bottom" ) {
+	 		snake.direction = 'top';  //上走	 						
+	 	}
+    }
+    function goDown(){
+    	if ( snake.direction != "top" ) {
+		 	snake.direction = 'bottom';  //下走	 						
+	 	}
+    }
+    function goRight(){
+    	if ( snake.direction != "left" ) {
+		 	snake.direction = 'right';  //右走 						
+	 	}
+    }
     //游戏结束
     function gameOver() {
     	ctx.fillStyle = 'rgba( 100, 100, 100, 0.8 )';
@@ -189,6 +226,8 @@
 	var snake = new Snake();
 	snake.draw();
 	snake.bind();
+
+
 	var food = new randomFood();
 	var timer = setInterval(function(){
 		ctx.clearRect(0,0,cvs.width,cvs.height);
@@ -196,4 +235,7 @@
         snake.move();
         snake.draw();
 	},100)
+</script>
+<script>
+
 </script>
