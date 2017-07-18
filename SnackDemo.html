@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	#box {
+		width: 800px;
+		margin: 150px auto;
+	}
+	#box canvas {
+		background-color: #ccc;
+	}
+	#box button {
+		width: 100px;
+		height:100px;
+		font-size: 32px;
+	}
+	#box .div1 {
+		width: 100px;
+		margin: 100px auto 0;
+	}
+	#box .div2 {
+		width: 310px;
+		margin: 5px auto;
+	}
+</style>
+<body>
+	<div id="box">
+		<canvas id="cvs" width="800" height="400"></canvas>
+		<div class="div1">
+			<button class="top" onclick="goTop()">↑</button>
+		</div>
+		<div class="div2">
+			<button id="left" onclick="goLeft()">←</button>
+			<button id="bottom" onclick="goDown()">↓</button>
+			<button id="right" onclick="goRight()">→</button>
+		</div>
+	</div>
+
+</body>
+</html>
+<script>
+	var cvs = document.querySelector('#cvs');
+	var ctx = cvs.getContext('2d');
+
+	//混入式继承
+	function extend(o1,o2) {
+		for(var key in o2){
+			if (o2.hasOwnProperty(key)) {
+				o1[key] = o2[key];
+			}
+		}
+	}
+
+	function Rect( x, y, width, height, color ) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.color = color;
+	}
+	//添加方法
+	extend( Rect.prototype,{
+		//绘制方块
+		draw:function(){
+			ctx.beginPath();
+			ctx.fillStyle = this.color;
+			ctx.rect(this.x, this.y, this.width, this.height);
+			ctx.fill();
+			ctx.stroke();
+		}
+	});
+	//蛇
+	function Snake() {
+		var snakeArray = [];
+		//初始长度
+		for(var i = 0; i<4; i++){
+			var rect = new Rect( i*20, 0, 20, 20, "blue" );
+			snakeArray.splice(0, 0, rect);
+		}
+		//把蛇头设为红色
+		var snakeHead = snakeArray[0];
+		snakeHead.color = 'red';
+
+		this.snakeHead = snakeArray[0];
+		this.snakeArray = snakeArray;
+		//初始化方向
+		this.direction = 'right';
+	}
+	extend( Snake.prototype, {
+		draw:function(){
+			for (var i = 0; i < this.snakeArray.length; i++) {
+				this.snakeArray[i].draw();
+			}
+		},
+		//蛇移动的方法 
+		move:function(){
+			var rect = new Rect( this.snakeHead.x, this.snakeHead.y, this.snakeHead.width, this.snakeHead.height, "blue");
+			this.snakeArray.splice(1,0,rect);
+			//判断是否吃到食物
+       		if (isEat()) {
+        		food = new randomFood();
+      		}else {
+      			this.snakeArray.pop();
+      		}
+      		//设置蛇头运动方向
+      		switch( this.direction ) {
+      			case 'left' :
+      				this.snakeHead.x -= this.snakeHead.width;
+      				break;
+      			case 'top' :
+      				this.snakeHead.y -= this.snakeHead.height;
+      				break;
+      			case 'right' :
+      				this.snakeHead.x += this.snakeHead.width;
+      				break;
+      			case 'bottom' :
+      				this.snakeHead.y += this.snakeHead.height;
+      				break;		
+      		}
+      		// 撞墙
+	        if (this.snakeHead.x > cvs.width-this.snakeHead.width || this.snakeHead.x < 0 || this.snakeHead.y > cvs.height - this.snakeHead.height || this.snakeHead.y < 0){
+	            clearInterval(timer);
+	            gameOver();
+                
+	        }
+	        // 撞自己，循环从1开始，避开蛇头与蛇头比较的情况
+	        for (var i = 1; i < this.snakeArray.length; i++) {
+	            if (this.snakeArray[i].x == this.snakeHead.x && this.snakeArray[i].y == this.snakeHead.y){
+	                clearInterval(timer);
+	                gameOver();
+	            }
+	        }
+		},
+		bind:function(){
+			var _this = this;
+			document.addEventListener( 'keydown',function(e){
+				var e = event || window.event;
+           		var keyCode = e.keyCode || e.which;
+				switch(e.keyCode) {
+					case 37:
+						goLeft();
+	 					break;
+	 				case 38:
+	 					goTop();
+	 					break;
+	 				case 39:
+	 					goRight();
+	 					break;
+	 				case 40:
+	 					goDown();
+	 					break;	
+				}
+				e.preventDefault();
+			});
+		}
+	});
+	//随机函数，获得[min,max]范围的值
+    function getNumberInRange (min,max) {
+        var range = max-min; 
+        return Math.round( Math.random()*range+min );
+    }
+	//创建随机食物
+	function randomFood() {
+		//判断食物是否在蛇身上
+		var isOnSnake = true;
+		while(isOnSnake){
+			//执行后先将判定条件设置为false，如果判定不重合，则不会再执行下列语句
+			isOnSnake = false;
+			var indexX = getNumberInRange(0,cvs.width/20-1);
+            var indexY = getNumberInRange(0,cvs.height/20-1);
+            var rect = new Rect( indexX*20, indexY*20, 20, 20, "green" );
+            for(var i = 0; i < snake.snakeArray.length; i++) {
+            	if(snake.snakeArray[i].x == rect.x && snake.snakeArray[i].y == rect.y){
+                    //如果判定重合，将其设置为true，使随机数重给
+                    isOnSnake = true;
+                    break;
+                }
+            }
+		}
+		return rect;
+	}
+	//判定吃到食物，即蛇头坐标与食物坐标重合
+    function isEat () {
+        if (snake.snakeHead.x == food.x && snake.snakeHead.y == food.y){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function goLeft(){
+    	if ( snake.direction != "right" ) {
+	 		snake.direction = "left";  //左走							
+		}
+    }
+    function goTop(){
+    	if ( snake.direction != "bottom" ) {
+	 		snake.direction = 'top';  //上走	 						
+	 	}
+    }
+    function goDown(){
+    	if ( snake.direction != "top" ) {
+		 	snake.direction = 'bottom';  //下走	 						
+	 	}
+    }
+    function goRight(){
+    	if ( snake.direction != "left" ) {
+		 	snake.direction = 'right';  //右走 						
+	 	}
+    }
+    //游戏结束
+    function gameOver() {
+    	ctx.fillStyle = 'rgba( 100, 100, 100, 0.8 )';
+        ctx.fillRect( 0, 0, ctx.canvas.width, ctx.canvas.height );
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = 'red';
+        ctx.font = '900 40px 微软雅黑';
+        ctx.fillText( 'GAME OVER!!!', ctx.canvas.width / 2, ctx.canvas.height / 2 );
+        return;
+    }
+</script>
+<script>
+	var snake = new Snake();
+	snake.draw();
+	snake.bind();
+
+
+	var food = new randomFood();
+	var timer = setInterval(function(){
+		ctx.clearRect(0,0,cvs.width,cvs.height);
+        food.draw();
+        snake.move();
+        snake.draw();
+	},100)
+</script>
+<script>
+
+</script>
